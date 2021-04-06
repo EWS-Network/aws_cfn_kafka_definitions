@@ -1,0 +1,28 @@
+{
+    "typeName": "EWS::Kafka::Topic",
+    "description": "Resource to create Kafka topics in your cluster.",
+    "sourceUrl": "https://github.com/ews-network/cfn-kafka-acl-resource-provider",
+    "definitions": {},
+    "properties": {
+        "Name": {
+            "$comment": "The name of the kafka topic",
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_.-]+$",
+            "description": "Kafka topic name"
+        },
+        "PartitionsCount": {
+            "type": "integer",
+            "default": 1,
+            "description": "Number of partitions for the new Kafka topic"
+        },
+        "ReplicationFactor": {
+            "type": "integer",
+            "default": 3,
+            "description": "Kafka topic replication factor"
+        },
+        "Settings": {
+            "type": "object"
+        }
+    }
+}
