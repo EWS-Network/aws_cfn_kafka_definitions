@@ -3,23 +3,24 @@
     "description": "Resource to create Kafka topics in your cluster.",
     "sourceUrl": "https://github.com/ews-network/cfn-kafka-acl-resource-provider",
     "required": [
-        "Name", "PartitionsCount"
+        "Name",
+        "PartitionsCount"
     ],
     "properties": {
         "Name": {
-            "$id": "#/definitions/Name"
+            "$ref": "#/definitions/Name"
         },
         "PartitionsCount": {
-            "$id": "#/definitions/PartitionsCount"
+            "$ref": "#/definitions/PartitionsCount"
         },
         "ReplicationFactor": {
-            "$id": "#/definitions/ReplicationFactor"
+            "$ref": "#/definitions/ReplicationFactor"
         },
         "Settings": {
-            "$id": "#/definitions/Settings"
+            "$ref": "#/definitions/Settings"
         },
         "Schema": {
-            "$id": "#/definitions/Schema"
+            "$ref": "#/definitions/Schema"
         }
     },
     "definitions": {
@@ -43,6 +44,27 @@
         "Settings": {
             "type": "object"
         },
+        "DefinitionDocument": {
+            "type": "object",
+            "additionalProperties": true,
+            "additionalItems": true,
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "namespace": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "array"
+                }
+            },
+            "required": [
+                "name",
+                "namespace",
+                "fields"
+            ]
+        },
         "Schema": {
             "type": "object",
             "properties": {
@@ -55,7 +77,14 @@
                     ]
                 },
                 "Definition": {
-                    "type": ["object", "string"]
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/definitions/DefinitionDocument"
+                        }
+                    ]
                 }
             }
         }
