@@ -70,9 +70,13 @@
             "required": [
                 "Type",
                 "Definition",
-                "SerializeAttribute"
+                "Subject"
             ],
             "properties": {
+                "Subject": {
+                    "type": "string",
+                    "description": "The name of the subject/topic to associate the schema to"
+                },
                 "Type": {
                     "type": "string",
                     "enum": [
@@ -97,7 +101,8 @@
                         "value",
                         "key"
                     ],
-                    "default": "value"
+                    "default": "value",
+                    "description": "Defines whether it applies to the key or value of the Subject"
                 },
                 "CompatibilityMode": {
                     "type": "string",
