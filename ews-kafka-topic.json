@@ -67,6 +67,11 @@
         },
         "Schema": {
             "type": "object",
+            "required": [
+                "Type",
+                "Definition",
+                "SerializeAttribute"
+            ],
             "properties": {
                 "Type": {
                     "type": "string",
@@ -85,6 +90,27 @@
                             "$ref": "#/definitions/DefinitionDocument"
                         }
                     ]
+                },
+                "SerializeAttribute": {
+                    "type": "string",
+                    "enum": [
+                        "value",
+                        "key"
+                    ],
+                    "default": "value"
+                },
+                "CompatibilityMode": {
+                    "type": "string",
+                    "enum": [
+                        "BACKWARD",
+                        "BACKWARD_TRANSITIVE",
+                        "FORWARD",
+                        "FORWARD_TRANSITIVE",
+                        "FULL",
+                        "FULL_TRANSITIVE",
+                        "NONE"
+                    ],
+                    "default": "NONE"
                 }
             }
         }
