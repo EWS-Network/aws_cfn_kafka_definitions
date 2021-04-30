@@ -78,7 +78,7 @@
                     "enum": [
                         "AVRO",
                         "JSON",
-                        "PROTOBUFF"
+                        "PROTOBUF"
                     ]
                 },
                 "Definition": {
