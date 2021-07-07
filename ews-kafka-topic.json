@@ -1,118 +1,120 @@
 {
-    "typeName": "EWS::Kafka::Topic",
-    "description": "Resource to create Kafka topics in your cluster.",
-    "sourceUrl": "https://github.com/ews-network/cfn-kafka-acl-resource-provider",
-    "required": [
-        "Name",
-        "PartitionsCount"
-    ],
-    "properties": {
-        "Name": {
-            "$ref": "#/definitions/Name"
-        },
-        "PartitionsCount": {
-            "$ref": "#/definitions/PartitionsCount"
-        },
-        "ReplicationFactor": {
-            "$ref": "#/definitions/ReplicationFactor"
-        },
-        "Settings": {
-            "$ref": "#/definitions/Settings"
-        },
-        "Schema": {
-            "$ref": "#/definitions/Schema"
-        }
+  "typeName": "EWS::Kafka::Topic",
+  "description": "Resource to create Kafka topics in your cluster.",
+  "sourceUrl": "https://github.com/ews-network/cfn-kafka-acl-resource-provider",
+  "required": [
+    "Name",
+    "PartitionsCount"
+  ],
+  "properties": {
+    "Name": {
+      "$ref": "#/definitions/Name"
     },
-    "definitions": {
-        "Name": {
-            "$comment": "The name of the kafka topic",
-            "type": "string",
-            "minLength": 1,
-            "pattern": "^[a-zA-Z0-9_.-]+$",
-            "description": "Kafka topic name"
-        },
-        "PartitionsCount": {
-            "type": "integer",
-            "default": 1,
-            "description": "Number of partitions for the new Kafka topic"
-        },
-        "ReplicationFactor": {
-            "type": "integer",
-            "default": 3,
-            "description": "Kafka topic replication factor"
-        },
-        "Settings": {
-            "type": "object"
-        },
-        "DefinitionDocument": {
-            "type": "object",
-            "additionalProperties": true,
-            "additionalItems": true,
-            "properties": {
-                "name": {
-                    "type": "string"
-                },
-                "namespace": {
-                    "type": "string"
-                },
-                "fields": {
-                    "type": "array"
-                }
-            },
-            "required": [
-                "name",
-                "namespace",
-                "fields"
-            ]
-        },
-        "Schema": {
-            "type": "object",
-            "required": [
-                "Type",
-                "Definition"
-            ],
-            "properties": {
-                "Type": {
-                    "type": "string",
-                    "enum": [
-                        "AVRO",
-                        "JSON",
-                        "PROTOBUF"
-                    ]
-                },
-                "Definition": {
-                    "oneOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "$ref": "#/definitions/DefinitionDocument"
-                        }
-                    ]
-                },
-                "SerializeAttribute": {
-                    "type": "string",
-                    "enum": [
-                        "value",
-                        "key"
-                    ],
-                    "default": "value",
-                    "description": "Defines whether it applies to the key or value of the Subject"
-                },
-                "CompatibilityMode": {
-                    "type": "string",
-                    "enum": [
-                        "BACKWARD",
-                        "BACKWARD_TRANSITIVE",
-                        "FORWARD",
-                        "FORWARD_TRANSITIVE",
-                        "FULL",
-                        "FULL_TRANSITIVE",
-                        "NONE"
-                    ],
-                    "default": "NONE"
-                }
-            }
-        }
+    "PartitionsCount": {
+      "$ref": "#/definitions/PartitionsCount"
+    },
+    "ReplicationFactor": {
+      "$ref": "#/definitions/ReplicationFactor"
+    },
+    "Settings": {
+      "$ref": "#/definitions/Settings"
+    },
+    "Schema": {
+      "$ref": "#/definitions/Schema"
     }
+  },
+  "definitions": {
+    "Name": {
+      "$comment": "The name of the kafka topic",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9_.-]+$",
+      "description": "Kafka topic name"
+    },
+    "PartitionsCount": {
+      "type": "integer",
+      "default": 1,
+      "description": "Number of partitions for the new Kafka topic"
+    },
+    "ReplicationFactor": {
+      "type": "integer",
+      "default": 3,
+      "description": "Kafka topic replication factor"
+    },
+    "Settings": {
+      "type": "object"
+    },
+    "DefinitionDocument": {
+      "type": "object",
+      "additionalProperties": true,
+      "additionalItems": true,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "namespace",
+        "fields"
+      ]
+    },
+    "Schema": {
+      "type": "object",
+      "required": [
+        "Type",
+        "Definition"
+      ],
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": [
+            "AVRO",
+            "JSON",
+            "PROTOBUF"
+          ]
+        },
+        "Definition": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "#/definitions/DefinitionDocument"
+            }
+          ]
+        },
+        "SerializeAttribute": {
+          "type": "string",
+          "enum": [
+            "value",
+            "key",
+            "both"
+          ],
+          "default": "value",
+          "description": "Defines whether it applies to the key or value of the Subject"
+        },
+        "CompatibilityMode": {
+          "description": "The schema compatibility mode",
+          "type": "string",
+          "enum": [
+            "BACKWARD",
+            "BACKWARD_TRANSITIVE",
+            "FORWARD",
+            "FORWARD_TRANSITIVE",
+            "FULL",
+            "FULL_TRANSITIVE",
+            "NONE"
+          ],
+          "default": "FULL"
+        }
+      }
+    }
+  }
 }

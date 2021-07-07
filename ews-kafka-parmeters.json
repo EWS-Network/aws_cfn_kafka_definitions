@@ -1,44 +1,69 @@
 {
-    "typeName": "EWS::Kafka::Parameters",
-    "description": "Generic properties used to connect to Kafka cluster.",
-    "sourceUrl": "https://github.com/ews-network/aws_cfn_kafka_definitions",
-    "properties": {
-        "BootstrapServers": {
-            "type": "string",
-            "description": "Endpoint URL of the Kafka cluster in the format hostname:port"
-        },
-        "SecurityProtocol": {
-            "type": "string",
-            "default": "PLAINTEXT",
-            "description": "Kafka Security Protocol.",
-            "enum": [
-                "PLAINTEXT",
-                "SSL",
-                "SASL_PLAINTEXT",
-                "SASL_SSL"
-            ]
-        },
-        "SASLMechanism": {
-            "type": "string",
-            "default": "PLAIN",
-            "description": "Kafka SASL mechanism for Authentication",
-            "enum": [
-                "PLAIN",
-                "GSSAPI",
-                "OAUTHBEARER",
-                "SCRAM-SHA-256",
-                "SCRAM-SHA-512"
-            ]
-        },
-        "SASLUsername": {
-            "type": "string",
-            "default": "",
-            "description": "Kafka SASL username for Authentication"
-        },
-        "SASLPassword": {
-            "type": "string",
-            "default": "",
-            "description": "Kafka SASL password for Authentication"
-        }
+  "typeName": "EWS::Kafka::Parameters",
+  "description": "Generic properties used to connect to Kafka cluster.",
+  "sourceUrl": "https://github.com/ews-network/aws_cfn_kafka_definitions",
+  "properties": {
+    "BootstrapServers": {
+      "type": "string",
+      "description": "Endpoint URL of the Kafka cluster in the format hostname:port"
+    },
+    "SecurityProtocol": {
+      "type": "string",
+      "default": "PLAINTEXT",
+      "description": "Kafka Security Protocol.",
+      "enum": [
+        "PLAINTEXT",
+        "SSL",
+        "SASL_PLAINTEXT",
+        "SASL_SSL"
+      ]
+    },
+    "SASLMechanism": {
+      "type": "string",
+      "default": "PLAIN",
+      "description": "Kafka SASL mechanism for Authentication",
+      "enum": [
+        "PLAIN",
+        "GSSAPI",
+        "OAUTHBEARER",
+        "SCRAM-SHA-256",
+        "SCRAM-SHA-512"
+      ]
+    },
+    "SASLUsername": {
+      "type": "string",
+      "default": "",
+      "description": "Kafka SASL username for Authentication"
+    },
+    "SASLPassword": {
+      "type": "string",
+      "default": "",
+      "description": "Kafka SASL password for Authentication"
+    },
+    "RegistryUrl": {
+      "type": "string",
+      "description": "Schema registry URL"
+    },
+    "RegistryUsername": {
+      "type": "string",
+      "description": "Schema registry username"
+    },
+    "RegistryPassword": {
+      "type": "string",
+      "description": "Schema registry password"
+    },
+    "CompatibilityMode": {
+      "type": "string",
+      "enum": [
+        "BACKWARD",
+        "BACKWARD_TRANSITIVE",
+        "FORWARD",
+        "FORWARD_TRANSITIVE",
+        "FULL",
+        "FULL_TRANSITIVE",
+        "NONE"
+      ],
+      "default": "NONE"
     }
+  }
 }
