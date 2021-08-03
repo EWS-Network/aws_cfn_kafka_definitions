@@ -42,7 +42,8 @@
       "description": "Kafka topic replication factor"
     },
     "Settings": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": true
     },
     "DefinitionDocument": {
       "type": "object",
